@@ -4,7 +4,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fix": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "npm run lint:js"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "vue": "^3.0.7",
@@ -18,6 +29,7 @@
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.9.0",
+    "husky": "^6.0.0",
     "postcss": "^8.2.15",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.1.2",
